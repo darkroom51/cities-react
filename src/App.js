@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './styles/global.scss';
-import {suggestions} from './utils/config';
+import { suggestions } from './utils/config';
 import Autosuggest from './components/Autosuggest';
+import CitiesList from './components/CitiesList';
 
 
 class App extends Component {
@@ -9,20 +10,20 @@ class App extends Component {
     cities: null
   }
 
-  setCities = (cities) => this.setState({cities:[...cities]});
+  setCities = (cities) => this.setState({ cities: [...cities] });
 
   render() {
-    console.log('app: ', this.state.cities);
+    const { cities } = this.state;
+
     return (
       <div className="App">
-        <Autosuggest 
+        <Autosuggest
           suggestions={suggestions}
           setCities={this.setCities}
         />
-        {
-          this.state.cities &&
-          this.state.cities.map(el => <div>{el}</div>)
-        }
+        <CitiesList
+          cities={cities}
+        />
       </div>
     );
   }

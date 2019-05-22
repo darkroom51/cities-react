@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {getCountryCode} from '../utils/helpers';
 import { getCities } from '../utils/api';
 
 
@@ -17,7 +18,7 @@ class Autosuggest extends Component {
     activeSuggestion: 0,
     filteredSuggestions: [],
     showSuggestions: false,
-    userInput: ""
+    userInput: ''
   };
 
   onChange = e => {
@@ -36,26 +37,23 @@ class Autosuggest extends Component {
   };
 
   onClick = e => {
-    const { setCities } = this.props;
-
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
       userInput: e.currentTarget.innerText
-    }, () => { getCities(this.state.userInput).then(data => setCities(data)) });
+    }, this.getCities);
   };
 
   onKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
-    const { setCities } = this.props;
 
     if (e.keyCode === 13) { //enter
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
         userInput: filteredSuggestions[activeSuggestion] || e.target.value
-      }, () => { getCities(this.state.userInput).then(data => setCities(data)) });
+      }, this.getCities);
     }
     else if (e.keyCode === 38) { //key up
       if (activeSuggestion === 0) {
@@ -73,6 +71,16 @@ class Autosuggest extends Component {
     }
   };
 
+  getCities = () => { 
+    const { setCities } = this.props;
+    const countryCode = getCountryCode(this.state.userInput);
+
+    if (countryCode) {
+      getCities(countryCode)
+        .then(data => setCities(data))
+        .catch(err=>console.log(err))
+    }
+  }
 
   render() {
     const {
@@ -92,12 +100,12 @@ class Autosuggest extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className="suggestions">
+          <ul className='suggestions'>
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
               if (index === activeSuggestion) {
-                className = "suggestion-active";
+                className = 'suggestion-active';
               }
 
               return (
@@ -110,7 +118,7 @@ class Autosuggest extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div className="no-suggestions">
+          <div className='no-suggestions'>
             <em>No suggestions, for {userInput}!</em>
           </div>
         );
@@ -118,10 +126,10 @@ class Autosuggest extends Component {
     }
 
     return (
-      <section className="autosuggest">
+      <section className='autosuggest'>
         <input
-          type="text"
-          placeholder="Choose Country..."
+          type='text'
+          placeholder='Choose Country...'
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
