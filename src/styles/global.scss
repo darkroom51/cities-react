@@ -1,5 +1,43 @@
-$color: red;
+//TEMP STYLING JUST FOR DEVELOPMENT
+
 .App {
-  color: $color;
+  text-align: left;
 }
 
+.autosuggest input {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.autosuggest .no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.autosuggest .suggestions {
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: calc(300px + 1rem);
+}
+
+.autosuggest .suggestions li {
+  padding: 0.5rem;
+}
+
+.autosuggest .suggestion-active,
+.autosuggest .suggestions li:hover {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.autosuggest .suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
