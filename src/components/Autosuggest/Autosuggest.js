@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {getCountryCode} from '../utils/helpers';
-import { getCities } from '../utils/api';
+import {getCountryCode} from '../../utils/helpers';
+import { getCities } from '../../utils/api';
 
 
 class Autosuggest extends Component {

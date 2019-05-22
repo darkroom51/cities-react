@@ -5,22 +5,15 @@ import AccordionItem from "./AccordionItem";
 
 class Accordion extends Component {
   static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired,
+    cities: PropTypes.instanceOf(Array)
   };
 
-  constructor(props) {
-    super(props);
+  static defaultProps = {
+    cities: []
+  };
 
-    const openSections = {};
+  state = { openSections: {} };
 
-    this.props.children.forEach(child => {
-      if (child.props.isOpen) {
-        openSections[child.props.label] = true;
-      }
-    });
-
-    this.state = { openSections };
-  }
 
   onClick = label => {
     const { state: { openSections } } = this;
@@ -36,16 +29,16 @@ class Accordion extends Component {
   render() {
     const {
       onClick,
-      props: { children },
+      props: { cities },
       state: { openSections },
     } = this;
 
     return (
       <div>
-        {children.map((child, i) => (
+        {cities && cities.map((city, i) => (
           <AccordionItem
-            isOpen={!!openSections[child.props.label]}
-            label={child.props.label}
+            isOpen={!!openSections[city]}
+            label={city}
             onClick={onClick}
             key={i}
           >

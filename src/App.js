@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles/global.scss';
 import { suggestions } from './utils/config';
 import Autosuggest from './components/Autosuggest';
-import CitiesList from './components/CitiesList';
+import Accordion from './components/Accordion';
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
           suggestions={suggestions}
           setCities={this.setCities}
         />
-        <CitiesList
+        <Accordion
           cities={cities}
         />
       </div>
