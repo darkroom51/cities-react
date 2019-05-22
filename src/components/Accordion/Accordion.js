@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import './style.scss';
 import AccordionItem from "./AccordionItem";
 
 
@@ -34,7 +35,7 @@ class Accordion extends Component {
     } = this;
 
     return (
-      <div>
+      <section className="items">
         {cities && cities.map((city, i) => (
           <AccordionItem
             isOpen={!!openSections[city]}
@@ -44,7 +45,7 @@ class Accordion extends Component {
           >
           </AccordionItem>
         ))}
-      </div>
+      </section>
     );
   }
 }

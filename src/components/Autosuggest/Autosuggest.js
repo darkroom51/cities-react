@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {getCountryCode} from '../../utils/helpers';
+import './style.scss';
+import { getCountryCode } from '../../utils/helpers';
 import { getCities } from '../../utils/api';
 
 
@@ -71,14 +72,14 @@ class Autosuggest extends Component {
     }
   };
 
-  getCities = () => { 
+  getCities = () => {
     const { setCities } = this.props;
     const countryCode = getCountryCode(this.state.userInput);
 
     if (countryCode) {
       getCities(countryCode)
         .then(data => setCities(data))
-        .catch(err=>console.log(err))
+        .catch(err => console.log(err))
     }
   }
 
@@ -129,6 +130,7 @@ class Autosuggest extends Component {
       <section className='autosuggest'>
         <input
           type='text'
+          className="autosuggest__input"
           placeholder='Choose Country...'
           onChange={onChange}
           onKeyDown={onKeyDown}

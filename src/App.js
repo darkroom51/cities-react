@@ -14,16 +14,16 @@ class App extends Component {
 
   render() {
     const { cities } = this.state;
+    const cityList = cities ? 
+      <Accordion cities={cities} /> : 'Choose country and see some cities';
 
     return (
-      <div className="App">
+      <div className="container">
         <Autosuggest
           suggestions={suggestions}
           setCities={this.setCities}
         />
-        <Accordion
-          cities={cities}
-        />
+        {cityList}
       </div>
     );
   }

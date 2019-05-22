@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { getCityDesc } from '../../utils/api';
 
+
 class AccordionSection extends PureComponent {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
@@ -26,7 +27,7 @@ class AccordionSection extends PureComponent {
 
     getCityDesc(this.props.label)
     .then(data => this.setState({ cityDesc: data.extract, cityImage: data.thumbnail.source }))
-    .catch(err => this.setState({ cityDesc: 'Ups, unable to get description' }));
+    .catch(err => this.setState({ cityDesc: 'Ups, unable to get description :(' }));
   };
 
   render() {
@@ -38,34 +39,21 @@ class AccordionSection extends PureComponent {
     const imageSrc = cityImage ? cityImage : 'https://images.pexels.com/photos/2250394/pexels-photo-2250394.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=320';
 
     return (
-      <div
-        style={{
-          background: isOpen ? "grey" : "lightgrey",
-          border: "1px solid grey",
-          padding: "5px 10px"
-        }}
-      >
-        <div onClick={onClick} style={{ cursor: "pointer" }}>
+      <div className={isOpen ? 'accordion__item open' : 'accordion__item'}>
+        <div onClick={onClick} className="label">
           {label}
           <div style={{ float: "right" }}>
-            {!isOpen && <span>&#9650;</span>}
-            {isOpen && <span>&#9660;</span>}
+            {!isOpen && <span>&#9660;</span>}
+            {isOpen && <span>&#9650;</span>}
           </div>
         </div>
         {isOpen && (
-          <div
-            style={{
-              background: "lightgrey",
-              border: "2px solid grey",
-              marginTop: 10,
-              padding: "10px 20px"
-            }}
-          >
+          <div className="accordion__description">
             {cityDesc ?
-              <div>
-                <img src={imageSrc} alt="City View" />
+              <>
+                <img src={imageSrc} alt={label} />
                 <div>{cityDesc}</div>
-              </div>
+              </>
               : 'Loading...'}
           </div>
         )}

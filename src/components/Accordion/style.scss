@@ -1,0 +1,60 @@
+@import "../../styles/colors";
+
+.accordion {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  
+    &__item {
+      font-size: 1.5rem;
+      width: 100%;
+      text-align: left;
+      background: $white;
+      box-shadow: $box-shadow;
+      transition: all .1s ease-in-out;
+    
+      .label{
+        padding: 1.5rem 2.5rem;
+        cursor: pointer;
+    
+        &:hover{
+          background: #fafafa;
+        }
+      }
+    
+      &.open{
+      margin: 1.5rem 0;
+      border-radius: $border-rad;
+        
+        .label{
+          background: #fafafa;
+    
+          &:hover{
+            background: #f7f7f7;
+          }
+        }
+      }
+    }
+  
+    &__description {
+      display:flex;
+      align-items: flex-start;
+      padding: 2rem 2rem;
+      @media (max-width:768px){
+        flex-direction: column;
+      }
+    
+      img{
+        width:auto;
+        height: auto;
+        margin-right: 2rem;
+        @media (max-width:768px){
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+  
+  

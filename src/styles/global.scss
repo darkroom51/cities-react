@@ -1,43 +1,26 @@
-//TEMP STYLING JUST FOR DEVELOPMENT
+@import "reset";
+@import "colors";
+@import "typography";
 
-.App {
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: $darkText;
+  background: $secondary;
+  text-align: center;
+}
+
+.container {
+  width:100%;
+  max-width:980px;
+  min-height:100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.brand {
+  font-size: 3rem;
+  color: $lightText;
+  padding: 1rem;
   text-align: left;
 }
 
-.autosuggest input {
-  border: 1px solid #999;
-  padding: 0.5rem;
-  width: 300px;
-}
-
-.autosuggest .no-suggestions {
-  color: #999;
-  padding: 0.5rem;
-}
-
-.autosuggest .suggestions {
-  border: 1px solid #999;
-  border-top-width: 0;
-  list-style: none;
-  margin-top: 0;
-  max-height: 143px;
-  overflow-y: auto;
-  padding-left: 0;
-  width: calc(300px + 1rem);
-}
-
-.autosuggest .suggestions li {
-  padding: 0.5rem;
-}
-
-.autosuggest .suggestion-active,
-.autosuggest .suggestions li:hover {
-  background-color: grey;
-  color: white;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.autosuggest .suggestions li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
-}
