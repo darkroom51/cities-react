@@ -43,7 +43,7 @@ class Autosuggest extends Component {
       filteredSuggestions: [],
       showSuggestions: false,
       userInput: e.currentTarget.innerText
-    }, this.getCities);
+    }, ()=>{this.getCities(); this.setUserInput()});
   };
 
   onKeyDown = e => {
@@ -54,7 +54,7 @@ class Autosuggest extends Component {
         activeSuggestion: 0,
         showSuggestions: false,
         userInput: filteredSuggestions[activeSuggestion] || e.target.value
-      }, this.getCities);
+      }, ()=>{this.getCities(); this.setUserInput()});
     }
     else if (e.keyCode === 38) { //key up
       if (activeSuggestion === 0) {
@@ -71,6 +71,22 @@ class Autosuggest extends Component {
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
+
+  setUserInput = () => {
+    if (!this.props.suggestions.includes(this.state.userInput)) return;
+    localStorage.setItem('userInput', JSON.stringify(this.state.userInput));
+  }
+
+  getUserInput = () => {
+    return JSON.parse(localStorage.getItem('userInput'));
+  }
+
+  componentDidMount() {
+    const userInput = this.getUserInput();
+    if (userInput) {
+      this.setState({userInput}, this.getCities);
+    }
+  }
 
   getCities = () => {
     const { setCities } = this.props;

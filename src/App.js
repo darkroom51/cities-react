@@ -7,7 +7,7 @@ import Accordion from './components/Accordion';
 
 class App extends Component {
   state = {
-    cities: null
+    cities: null,
   }
 
   setCities = (cities) => this.setState({ cities: [...cities] });
