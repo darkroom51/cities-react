@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getCityDesc } from '../../utils/api';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
+import noImage from '../../assets/images/no-image.jpeg';
 
 class AccordionItem extends PureComponent {
   static propTypes = {
@@ -37,7 +37,7 @@ class AccordionItem extends PureComponent {
       props: { isOpen, label },
       state: { cityDesc, cityImage }
     } = this;
-    const imageSrc = cityImage ? cityImage : 'https://images.pexels.com/photos/2250394/pexels-photo-2250394.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=320';
+    const imageSrc = cityImage ? cityImage : noImage;
 
     return (
       <div className={isOpen ? 'accordion__item open' : 'accordion__item'}>
