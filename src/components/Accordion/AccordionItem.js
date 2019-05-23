@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { getCityDesc } from '../../utils/api';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import noImage from '../../assets/images/no-image.jpeg';
+import noImage from '../../assets/images/no-image.png';
 
 class AccordionItem extends PureComponent {
   static propTypes = {
