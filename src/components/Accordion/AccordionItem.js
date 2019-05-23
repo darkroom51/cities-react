@@ -4,7 +4,7 @@ import { getCityDesc } from '../../utils/api';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 
-class AccordionSection extends PureComponent {
+class AccordionItem extends PureComponent {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
@@ -63,4 +63,4 @@ class AccordionSection extends PureComponent {
   }
 }
 
-export default AccordionSection;
+export default AccordionItem;
