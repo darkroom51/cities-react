@@ -1,7 +1,7 @@
 @import "../../styles/colors";
 
 .autosuggest {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     padding: 2rem;
     background: $main;
     border-radius: $border-rad;
@@ -20,7 +20,7 @@
     .suggestions {
       text-align: left;
       position: absolute;
-      background: white;
+      background: $white;
       border: 1px solid #ccc;
       box-shadow: $box-shadow;
       border-radius: $border-rad;
@@ -53,7 +53,7 @@
     }
 
     .no-suggestions {
-        color: white;
+        color: $white;
         padding: 0.5rem;
       }
   }

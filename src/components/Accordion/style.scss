@@ -20,6 +20,11 @@
         &:hover{
           background: #fafafa;
         }
+
+        .icon{
+          float:right;
+          color: $darkText;
+        }
       }
     
       &.open{

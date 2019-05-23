@@ -130,7 +130,7 @@ class Autosuggest extends Component {
       <section className='autosuggest'>
         <input
           type='text'
-          className="autosuggest__input"
+          className='autosuggest__input'
           placeholder='Choose Country...'
           onChange={onChange}
           onKeyDown={onKeyDown}

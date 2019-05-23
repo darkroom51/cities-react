@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
-import AccordionItem from "./AccordionItem";
+import AccordionItem from './AccordionItem';
 
 
 class Accordion extends Component {
@@ -14,7 +14,6 @@ class Accordion extends Component {
   };
 
   state = { openSections: {} };
-
 
   onClick = label => {
     const { state: { openSections } } = this;
@@ -35,7 +34,7 @@ class Accordion extends Component {
     } = this;
 
     return (
-      <section className="items">
+      <section className='accordion'>
         {cities && cities.map((city, i) => (
           <AccordionItem
             isOpen={!!openSections[city]}
